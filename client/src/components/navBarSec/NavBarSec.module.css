@@ -1,0 +1,36 @@
+.nav {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+.input {
+  height: 35px;
+  width: 250px;
+  font-size: 20px;
+  border-radius: 18px;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  -ms-border-radius: 18px;
+  -o-border-radius: 18px;
+  border: 1px solid #ffff;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.boton {
+  height: 40px;
+  background: #898be8;
+  color: white;
+  cursor: pointer;
+  border-radius: 18px;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  -ms-border-radius: 18px;
+  -o-border-radius: 18px;
+}

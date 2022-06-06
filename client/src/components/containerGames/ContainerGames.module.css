@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-direction: row;
+  background: #665d5d;
+}
+
+.pie {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.boton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #898be8;
+}

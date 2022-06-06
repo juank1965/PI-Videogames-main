@@ -1,0 +1,25 @@
+.card {
+  background: #202020;
+  padding: 5px;
+  border-radius: 18px;
+  border-style: solid;
+  border-width: 0.1rem;
+  border-color: #faf7f7;
+  margin: 0.3rem;
+  font-size: 1.3rem;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  -ms-border-radius: 18px;
+  -o-border-radius: 18px;
+}
+
+.imagen {
+  border-radius: 18px 18px 0px 0px;
+  width: 100%;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
