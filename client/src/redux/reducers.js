@@ -1,5 +1,8 @@
 const initialState = {
+  videogamesRender: [],
   videogames: [],
+  platforms: [],
+  genres: [],
 };
 
 function reducer(state = initialState, action) {

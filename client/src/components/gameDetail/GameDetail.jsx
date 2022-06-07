@@ -34,7 +34,7 @@ const GameDetail = () => {
           </div>
           <div>
             <p>Rating</p>
-            <p>starts: 5</p>
+            <p>stars: 5</p>
           </div>
           <div>
             <p>Platforms</p>

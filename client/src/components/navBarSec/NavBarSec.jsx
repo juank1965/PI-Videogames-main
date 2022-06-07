@@ -50,9 +50,9 @@ function NavBarMain() {
             defaultValue={"default"}
           >
             <option value={"default"}>Select by: BD Origin...</option>
-            <option value="1">Any</option>
-            <option value="2">External</option>
-            <option value="3">Internal</option>
+            <option value="both">Both</option>
+            <option value="api">External API</option>
+            <option value="bd">Internal BD</option>
           </select>
         </div>
         <div>
@@ -62,9 +62,9 @@ function NavBarMain() {
             defaultValue={"default"}
           >
             <option value={"default"}>Order By:...</option>
-            <option value="1">Alphabetic asc</option>
-            <option value="2">Alphabetic desc</option>
-            <option value="3">Rating</option>
+            <option value="a">Alphabetic asc</option>
+            <option value="d">Alphabetic desc</option>
+            <option value="r">Rating</option>
           </select>
         </div>
         <div>
