@@ -7,36 +7,139 @@ function GameCreate() {
   const [description, setDescription] = useState("");
   const [released, setReleased] = useState("");
   const [rating, setRating] = useState("");
-  const [genre, setGenre] = useState({
-    action: false,
-    adventure: false,
-    indi: false,
-    rpg: false,
-    strategy: false,
-    simulation: false,
-    sports: false,
-    shooter: false,
-    casual: false,
-    puzzle: false,
-    cards: false,
-    arcade: false,
-    racing: false,
-    fighting: false,
-    board: false,
-    family: false,
-    platformer: false,
-    educational: false,
-    massively: false,
-  });
+  const [genre, setGenre] = useState([
+    {
+      id: "4",
+      name: "Action",
+      status: false,
+    },
+    {
+      id: "3",
+      name: "Adventure",
+      status: false,
+    },
+    {
+      id: "51",
+      name: "Indie",
+      status: false,
+    },
+    {
+      id: "5",
+      name: "RPG",
+      status: false,
+    },
+    {
+      id: "10",
+      name: "Strategy",
+      status: false,
+    },
+    {
+      id: "14",
+      name: "Simulation",
+      status: false,
+    },
+    {
+      id: "15",
+      name: "Sports",
+      status: false,
+    },
+    {
+      id: "2",
+      name: "Shooter",
+      status: false,
+    },
+    {
+      id: "40",
+      name: "Casual",
+      status: false,
+    },
+    {
+      id: "7",
+      name: "Puzzle",
+      status: false,
+    },
+    {
+      id: "17",
+      name: "Card",
+      status: false,
+    },
+    {
+      id: "11",
+      name: "Arcade",
+      status: false,
+    },
+    {
+      id: "1",
+      name: "Racing",
+      status: false,
+    },
+    {
+      id: "6",
+      name: "Fighting",
+      status: false,
+    },
+    {
+      id: "28",
+      name: "Board",
+      status: false,
+    },
+    {
+      id: "19",
+      name: "Family",
+      status: false,
+    },
+    {
+      id: "83",
+      name: "Platformer",
+      status: false,
+    },
+    {
+      id: "34",
+      name: "Eduactional",
+      status: false,
+    },
+    {
+      id: "59",
+      name: "Massively",
+      status: false,
+    },
+  ]);
 
-  const [platform, setPlatform] = useState({
-    pc: false,
-    ps4: false,
-    xbox: false,
-    nintendo: false,
-    ios: false,
-    android: false,
-  });
+  const [platform, setPlatform] = useState([
+    {
+      id: "4",
+      name: "pc",
+      estatus: false,
+    },
+    {
+      id: "18",
+      name: "ps4",
+      status: false,
+    },
+    {
+      id: "80",
+      name: "xbox",
+      status: false,
+    },
+    {
+      id: "7",
+      name: "nintendo",
+      status: false,
+    },
+    {
+      id: "3",
+      name: "ios",
+      status: false,
+    },
+    {
+      id: "21",
+      name: "android",
+      status: false,
+    },
+  ]);
+
+  const [idplatform, setIdPlatform] = useState([]);
+  const [idgenre, setIdGenre] = useState([]);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -58,14 +161,30 @@ function GameCreate() {
     const target = e.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
-    setGenre({ ...genre, [name]: value });
+    // buscar el name en el array genre
+    const index = genre.findIndex((item) => item.name === name);
+    // reemplazar en el array genre el elemento que se encuentra en el index con nuevo status con value
+    const newGenre = [...genre];
+    newGenre[index].status = value;
+    setGenre(newGenre);
+    if (value) {
+      setIdGenre([...idgenre, newGenre[index].id]);
+    }
   };
 
   const handlePlatformChange = (e) => {
     const target = e.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
-    setPlatform({ ...platform, [name]: value });
+    // buscar el name en el array platform
+    const index = platform.findIndex((item) => item.name === name);
+    // reemplazar en el array platform el elemento que se encuentra en el index con nuevo status con value
+    const newPlatform = [...platform];
+    newPlatform[index].status = value;
+    setPlatform(newPlatform);
+    if (value) {
+      setIdPlatform([...idplatform, newPlatform[index].id]);
+    }
   };
 
   return (
@@ -135,127 +254,149 @@ function GameCreate() {
                 <div className={style.bloque}>
                   <div>
                     <input
-                      name="action"
+                      name="Action"
                       type="checkbox"
-                      id="action"
-                      checked={genre.action}
+                      id="Action"
+                      checked={
+                        genre.find((item) => item.name === "Action").status
+                      }
                       onChange={handleGenreChange}
                     />
-                    <label htmlFor="action">Action</label>
+                    <label htmlFor="Action">Action</label>
                   </div>
                   <div>
                     <input
-                      name="indi"
+                      name="Indie"
                       type="checkbox"
-                      id="indi"
-                      checked={genre.indi}
+                      id="Indie"
+                      checked={
+                        genre.find((item) => item.name === "Indie").status
+                      }
                       onChange={handleGenreChange}
                     />
-                    <label htmlFor="indi">Indi</label>
+                    <label htmlFor="Indie">Indie</label>
                   </div>
                   <div>
                     <input
-                      name="adventure"
+                      name="Adventure"
                       type="checkbox"
-                      id="adventure"
-                      checked={genre.adventure}
+                      id="Adventure"
+                      checked={
+                        genre.find((item) => item.name === "Adventure").status
+                      }
                       onChange={handleGenreChange}
                     />
-                    <label htmlFor="adventure">Adventure</label>
+                    <label htmlFor="Adventure">Adventure</label>
                   </div>
                   <div>
                     <input
-                      name="rpg"
+                      name="RPG"
                       type="checkbox"
-                      id="rpg"
-                      checked={genre.rpg}
+                      id="RPG"
+                      checked={genre.find((item) => item.name === "RPG").status}
                       onChange={handleGenreChange}
                     />
-                    <label htmlFor="rpg">RPG</label>
-                  </div>
-                </div>
-                <div className={style.bloque}>
-                  <div>
-                    <input
-                      name="strategy"
-                      type="checkbox"
-                      id="strategy"
-                      checked={genre.strategy}
-                      onChange={handleGenreChange}
-                    />
-                    <label htmlFor="strategy">Strategy</label>
-                  </div>
-                  <div>
-                    <input
-                      name="shooter"
-                      type="checkbox"
-                      id="shooter"
-                      checked={genre.shooter}
-                      onChange={handleGenreChange}
-                    />
-                    <label htmlFor="shooter">Shooter</label>
-                  </div>
-                  <div>
-                    <input
-                      name="casual"
-                      type="checkbox"
-                      id="casual"
-                      checked={genre.casual}
-                      onChange={handleGenreChange}
-                    />
-                    <label htmlFor="casual">Casual</label>
-                  </div>
-                  <div>
-                    <input
-                      name="simulation"
-                      type="checkbox"
-                      id="simulation"
-                      checked={genre.simulation}
-                      onChange={handleGenreChange}
-                    />
-                    <label htmlFor="simulation">Simulation</label>
+                    <label htmlFor="RPG">RPG</label>
                   </div>
                 </div>
                 <div className={style.bloque}>
                   <div>
                     <input
-                      name="puzzle"
+                      name="Strategy"
                       type="checkbox"
-                      id="puzzle"
-                      checked={genre.puzzle}
+                      id="Strategy"
+                      checked={
+                        genre.find((item) => item.name === "Strategy").status
+                      }
                       onChange={handleGenreChange}
                     />
-                    <label htmlFor="puzzle">Puzzle</label>
+                    <label htmlFor="Strategy">Strategy</label>
                   </div>
                   <div>
                     <input
-                      name="arcade"
+                      name="Shooter"
                       type="checkbox"
-                      id="arcade"
-                      checked={genre.arcade}
+                      id="Shooter"
+                      checked={
+                        genre.find((item) => item.name === "Shooter").status
+                      }
                       onChange={handleGenreChange}
                     />
-                    <label htmlFor="arcade">Arcade</label>
+                    <label htmlFor="Shooter">Shooter</label>
                   </div>
                   <div>
                     <input
-                      name="platformer"
+                      name="Casual"
                       type="checkbox"
-                      id="platformer"
-                      checked={genre.platformer}
+                      id="Ccasual"
+                      checked={
+                        genre.find((item) => item.name === "Casual").status
+                      }
                       onChange={handleGenreChange}
                     />
-                    <label htmlFor="platformer">Platformer</label>
+                    <label htmlFor="Casual">Casual</label>
                   </div>
                   <div>
                     <input
-                      name="racing"
+                      name="Simulation"
                       type="checkbox"
-                      id="racing"
-                      checked={genre.racing}
+                      id="Simulation"
+                      checked={
+                        genre.find((item) => item.name === "Simulation").status
+                      }
                       onChange={handleGenreChange}
                     />
-                    <label htmlFor="racing">Racing</label>
+                    <label htmlFor="Simulation">Simulation</label>
+                  </div>
+                </div>
+                <div className={style.bloque}>
+                  <div>
+                    <input
+                      name="Puzzle"
+                      type="checkbox"
+                      id="Puzzle"
+                      checked={
+                        genre.find((item) => item.name === "Puzzle").status
+                      }
+                      onChange={handleGenreChange}
+                    />
+                    <label htmlFor="Puzzle">Puzzle</label>
+                  </div>
+                  <div>
+                    <input
+                      name="Arcade"
+                      type="checkbox"
+                      id="Arcade"
+                      checked={
+                        genre.find((item) => item.name === "Arcade").status
+                      }
+                      onChange={handleGenreChange}
+                    />
+                    <label htmlFor="Arcade">Arcade</label>
+                  </div>
+                  <div>
+                    <input
+                      name="Platformer"
+                      type="checkbox"
+                      id="Platformer"
+                      checked={
+                        genre.find((item) => item.name === "Platformer").status
+                      }
+                      onChange={handleGenreChange}
+                    />
+                    <label htmlFor="Platformer">Platformer</label>
+                  </div>
+                  <div>
+                    <input
+                      name="Racing"
+                      type="checkbox"
+                      id="Racing"
+                      checked={
+                        genre.find((item) => item.name === "Racing").status
+                      }
+                      onChange={handleGenreChange}
+                    />
+                    <label htmlFor="Racing">Racing</label>
                   </div>
                 </div>
               </div>
@@ -263,30 +404,36 @@ function GameCreate() {
                 <div className={style.bloque}>
                   <div>
                     <input
-                      name="sports"
+                      name="Sports"
                       type="checkbox"
-                      id="sports"
-                      checked={genre.sports}
+                      id="Sports"
+                      checked={
+                        genre.find((item) => item.name === "Sports").status
+                      }
                       onChange={handleGenreChange}
                     />
-                    <label htmlFor="sports">Sports</label>
+                    <label htmlFor="Sports">Sports</label>
                   </div>
                   <div>
                     <input
-                      name="fighting"
+                      name="Fighting"
                       type="checkbox"
-                      id="fighting"
-                      checked={genre.fighting}
+                      id="Fighting"
+                      checked={
+                        genre.find((item) => item.name === "Fighting").status
+                      }
                       onChange={handleGenreChange}
                     />
-                    <label htmlFor="fighting">Fighting</label>
+                    <label htmlFor="Fighting">Fighting</label>
                   </div>
                   <div>
                     <input
-                      name="family"
+                      name="Family"
                       type="checkbox"
-                      id="family"
-                      checked={genre.family}
+                      id="Family"
+                      checked={
+                        genre.find((item) => item.name === "Family").status
+                      }
                       onChange={handleGenreChange}
                     />
                     <label htmlFor="Family">Family</label>
@@ -295,43 +442,51 @@ function GameCreate() {
                 <div className={style.bloque}>
                   <div>
                     <input
-                      name="board"
+                      name="Board"
                       type="checkbox"
-                      id="board"
-                      checked={genre.board}
+                      id="Board"
+                      checked={
+                        genre.find((item) => item.name === "Board").status
+                      }
                       onChange={handleGenreChange}
                     />
-                    <label htmlFor="board">Board Game</label>
+                    <label htmlFor="Board">Board Game</label>
                   </div>
                   <div>
                     <input
-                      name="educational"
+                      name="Educational"
                       type="checkbox"
-                      id="edu"
-                      checked={genre.educational}
+                      id="Edu"
+                      checked={
+                        genre.find((item) => item.name === "Educational").status
+                      }
                       onChange={handleGenreChange}
                     />
-                    <label htmlFor="edu">Educational</label>
+                    <label htmlFor="Edu">Educational</label>
                   </div>
                   <div>
                     <input
-                      name="cards"
+                      name="Card"
                       type="checkbox"
-                      id="cards"
-                      checked={genre.cards}
+                      id="Card"
+                      checked={
+                        genre.find((item) => item.name === "Card").status
+                      }
                       onChange={handleGenreChange}
                     />
-                    <label htmlFor="card">Cards Games</label>
+                    <label htmlFor="Card">Cards Games</label>
                   </div>
                   <div>
                     <input
-                      name="massively"
+                      name="Massively"
                       type="checkbox"
-                      id="massively"
-                      checked={genre.massively}
+                      id="Massively"
+                      checked={
+                        genre.find((item) => item.name === "Massively").status
+                      }
                       onChange={handleGenreChange}
                     />
-                    <label htmlFor="massively">Massively Multiplayer</label>
+                    <label htmlFor="Massively">Massively Multiplayer</label>
                   </div>
                 </div>
               </div>
@@ -346,7 +501,7 @@ function GameCreate() {
                     name="pc"
                     type="checkbox"
                     id="pc"
-                    checked={platform.pc}
+                    checked={platform.find((item) => item.name === "pc").status}
                     onChange={handlePlatformChange}
                   />
                   <label htmlFor="pc">PC</label>
@@ -356,7 +511,9 @@ function GameCreate() {
                     name="ps4"
                     type="checkbox"
                     id="ps4"
-                    checked={platform.ps4}
+                    checked={
+                      platform.find((item) => item.name === "ps4").status
+                    }
                     onChange={handlePlatformChange}
                   />
                   <label htmlFor="ps4">PlayStation 4</label>
@@ -366,7 +523,9 @@ function GameCreate() {
                     name="xbox"
                     type="checkbox"
                     id="xbox"
-                    checked={platform.xbox}
+                    checked={
+                      platform.find((item) => item.name === "xbox").status
+                    }
                     onChange={handlePlatformChange}
                   />
                   <label htmlFor="xbox">Xbox One</label>
@@ -378,7 +537,9 @@ function GameCreate() {
                     name="nintendo"
                     type="checkbox"
                     id="nintendo"
-                    checked={platform.nintendo}
+                    checked={
+                      platform.find((item) => item.name === "nintendo").status
+                    }
                     onChange={handlePlatformChange}
                   />
                   <label htmlFor="nintendo">Nintendo Switch</label>
@@ -388,7 +549,9 @@ function GameCreate() {
                     name="ios"
                     type="checkbox"
                     id="ios"
-                    checked={platform.ios}
+                    checked={
+                      platform.find((item) => item.name === "ios").status
+                    }
                     onChange={handlePlatformChange}
                   />
                   <label htmlFor="ios">IOS</label>
@@ -398,7 +561,9 @@ function GameCreate() {
                     name="android"
                     type="checkbox"
                     id="android"
-                    checked={platform.android}
+                    checked={
+                      platform.find((item) => item.name === "android").status
+                    }
                     onChange={handlePlatformChange}
                   />
                   <label htmlFor="android">Android</label>

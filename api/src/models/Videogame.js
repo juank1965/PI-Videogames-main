@@ -25,7 +25,7 @@ const Videogame = sequelize.define(
       type: DataTypes.STRING,
     },
     rating: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.STRING,
     },
   },
   {

@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ContainerGames from "../containerGames/ContainerGames";
 import style from "./NavBarSec.module.css";
+import searchIcon from "../../assets/search.png";
+import { getVideogameByName } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 
 function NavBarMain() {
+  const [search, setSearch] = useState("");
+  let dispatch = useDispatch();
+
+  const searchByname = (e) => {
+    e.preventDefault();
+    dispatch(getVideogameByName(search));
+  };
+
   return (
     <div>
       <nav className={style.nav}>
-        <form className={style.form}>
+        <form className={style.form} onSubmit={searchByname}>
           <input
             className={style.input}
             type="search"
             placeholder="Search by name"
             aria-label="Search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
+          <button type="submit">
+            <img className={style.icon} src={searchIcon} alt="search" />
+          </button>
         </form>
         <div>
           <select

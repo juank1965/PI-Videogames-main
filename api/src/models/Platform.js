@@ -12,9 +12,6 @@ const Platform = sequelize.define(
     name: {
       type: DataTypes.STRING,
     },
-    image_background: {
-      type: DataTypes.TEXT,
-    },
   },
   {
     timestamps: false,

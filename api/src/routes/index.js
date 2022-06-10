@@ -14,7 +14,7 @@ router.get("/", home);
 router.get("/platforms", getPlatforms);
 router.get("/genres", getGenres);
 router.get("/videogame/:id", getVideogameById);
-router.post("/videogame", createVideogame);
+router.post("/videogames", createVideogame);
 router.get("/videogames", getVideogames);
 
 export default router;
