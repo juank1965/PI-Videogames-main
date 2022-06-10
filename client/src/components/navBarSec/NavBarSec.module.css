@@ -6,6 +6,7 @@
   margin-left: 60px;
   margin-right: 60px;
   margin-bottom: 2em;
+  align-items: center;
 }
 
 .form {
@@ -47,4 +48,9 @@
   -moz-border-radius: 18px;
   -ms-border-radius: 18px;
   -o-border-radius: 18px;
+}
+
+.selectores {
+  display: flex;
+  flex-direction: column;
 }

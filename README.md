@@ -115,13 +115,13 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
 
 **Ruta principal**: debe contener
 
-- [ ] Input de búsqueda para encontrar videojuegos por nombre
-- [ ] Área donde se verá el listado de videojuegos. Deberá mostrar su:
+- [x] Input de búsqueda para encontrar videojuegos por nombre
+- [x] Área donde se verá el listado de videojuegos. Deberá mostrar su:
   - Imagen
   - Nombre
   - Géneros
-- [ ] Botones/Opciones para filtrar por género y por videojuego existente o agregado por nosotros
-- [ ] Botones/Opciones para ordenar tanto ascendentemente como descendentemente los videojuegos por orden alfabético y por rating
+- [x] Botones/Opciones para filtrar por género y por videojuego existente o agregado por nosotros
+- [x] Botones/Opciones para ordenar tanto ascendentemente como descendentemente los videojuegos por orden alfabético y por rating
 - [ ] Paginado para ir buscando y mostrando los siguientes videojuegos, 15 juegos por pagina, mostrando los primeros 15 en la primer pagina.
 
 **IMPORTANTE**: Dentro de la Ruta Principal se deben mostrar tanto los videjuegos traidos desde la API como así también los de la base de datos. Debido a que en la API existen alrededor de 500 mil juegos, por cuestiones de performance pueden tomar la simplificación de obtener y paginar los primeras 100.
@@ -136,14 +136,14 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
 
 **Ruta de creación de videojuegos**: debe contener
 
-- [ ] Un formulario **controlado con JavaScript** con los siguientes campos:
+- [x] Un formulario **controlado con JavaScript** con los siguientes campos:
   - Nombre
   - Descripción
   - Fecha de lanzamiento
   - Rating
-- [ ] Posibilidad de seleccionar/agregar varios géneros
-- [ ] Posibilidad de seleccionar/agregar varias plataformas
-- [ ] Botón/Opción para crear un nuevo videojuego
+- [x] Posibilidad de seleccionar/agregar varios géneros
+- [x] Posibilidad de seleccionar/agregar varias plataformas
+- [x] Botón/Opción para crear un nuevo videojuego
 
 > Es requisito que el formulario de creación esté validado con JavaScript y no sólo con validaciones HTML. Pueden agregar las validaciones que consideren. Por ejemplo: Que el nombre del juego no pueda contener algunos símbolos, que el rating no pueda exceder determinado valor, etc.
 
@@ -151,14 +151,14 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
 
 El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
 
-- [ ] Videojuego con las siguientes propiedades:
+- [x] Videojuego con las siguientes propiedades:
   - ID: \* No puede ser un ID de un videojuego ya existente en la API rawg
   - Nombre \*
   - Descripción \*
   - Fecha de lanzamiento
   - Rating
   - Plataformas \*
-- [ ] Genero con las siguientes propiedades:
+- [x] Genero con las siguientes propiedades:
   - ID
   - Nombre
 
@@ -172,20 +172,20 @@ Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
 
 **IMPORTANTE**: No está permitido utilizar los filtrados, ordenamientos y paginados brindados por la API externa, todas estas funcionalidades tienen que implementarlas ustedes.
 
-- [ ] **GET /videogames**:
+- [x] **GET /videogames**:
   - Obtener un listado de los videojuegos
   - Debe devolver solo los datos necesarios para la ruta principal
-- [ ] **GET /videogames?name="..."**:
+- [x] **GET /videogames?name="..."**:
   - Obtener un listado de las primeros 15 videojuegos que contengan la palabra ingresada como query parameter
   - Si no existe ningún videojuego mostrar un mensaje adecuado
-- [ ] **GET /videogame/{idVideogame}**:
+- [x] **GET /videogame/{idVideogame}**:
   - Obtener el detalle de un videojuego en particular
   - Debe traer solo los datos pedidos en la ruta de detalle de videojuego
   - Incluir los géneros asociados
-- [ ] **POST /videogames**:
+- [x] **POST /videogames**:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de videojuego por body
   - Crea un videojuego en la base de datos, relacionado a sus géneros.
-- [ ] **GET /genres**:
+- [x] **GET /genres**:
   - Obtener todos los tipos de géneros de videojuegos posibles
   - En una primera instancia deberán traerlos desde rawg y guardarlos en su propia base de datos y luego ya utilizarlos desde allí
 

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllVideoGames } from "../../redux/actions";
 
 const ContainerGames = () => {
-  let videogames = useSelector((state) => state.videogames);
+  let videogames = useSelector((state) => state.videogamesFiltrados);
   const dispatch = useDispatch();
   const [pinicial, setPinicial] = useState(1);
   const pfinal = 7;

@@ -1,91 +1,128 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ContainerGames from "../containerGames/ContainerGames";
 import style from "./NavBarSec.module.css";
 import searchIcon from "../../assets/search.png";
-import { getVideogameByName } from "../../redux/actions";
+import {
+  getVideogamesByName,
+  sortVideoGames,
+  changeOriginBD,
+  changeGenre,
+} from "../../redux/actions";
+//import { getVideogamesByGenre } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
 function NavBarMain() {
+  // estado para el input de busqueda
   const [search, setSearch] = useState("");
-  let dispatch = useDispatch();
 
+  let dispatch = useDispatch();
+  // funcion para buscar un videojuego
   const searchByname = (e) => {
     e.preventDefault();
-    dispatch(getVideogameByName(search));
+    setSearch(e.target.value);
   };
+
+  const handlerGenreChange = (e) => {
+    e.preventDefault();
+    dispatch(changeGenre(e.target.value));
+  };
+
+  // funcion para ordenar videojuegos ascendentemente descendentemente y por rating
+  const handlerOrderChange = (e) => {
+    e.preventDefault();
+    dispatch(sortVideoGames(e.target.value));
+  };
+
+  const handlerBDOriginChange = (e) => {
+    e.preventDefault();
+    dispatch(changeOriginBD(e.target.value));
+  };
+
+  useEffect(() => {
+    dispatch(getVideogamesByName(search));
+  }, [search]);
 
   return (
     <div>
       <nav className={style.nav}>
-        <form className={style.form} onSubmit={searchByname}>
+        <div className={style.selectores}>
+          <label htmlFor="Search">Search By Name:...</label>
           <input
+            id="Search"
             className={style.input}
             type="search"
-            placeholder="Search by name"
+            placeholder="Videogame's Name..."
             aria-label="Search"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={searchByname}
           />
-          <button type="submit">
-            <img className={style.icon} src={searchIcon} alt="search" />
-          </button>
-        </form>
-        <div>
+          <img className={style.icon} src={searchIcon} alt="search" />
+        </div>
+        <div className={style.selectores}>
+          <label htmlFor="selectByGenre">Select By Genre:...</label>
           <select
             className={style.input}
-            id="inputGroupSelect01"
-            defaultValue={"default"}
+            placeholder="Search by genre"
+            id="selectByGenre"
+            onChange={handlerGenreChange}
           >
-            <option value={"default"}>Search by: Genre...</option>
-            <option value="action">Action</option>
-            <option value="indi">Indi</option>
-            <option value="adventure">Adventure</option>
-            <option value="rpg">RPG</option>
-            <option value="strategy">Strategy</option>
-            <option value="shooter">Shooter</option>
-            <option value="casual">Casual</option>
-            <option value="simulation">Simulation</option>
-            <option value="puzzle">Puzzle</option>
-            <option value="arcade">Arcade</option>
-            <option value="platformer">Platformer</option>
-            <option value="racing">Racing</option>
-            <option value="massively">Massively Multiplayer</option>
-            <option value="sports">Sports</option>
-            <option value="fighting">Fighting</option>
-            <option value="family">Family</option>
-            <option value="board">Board Games</option>
-            <option value="educational">Educational</option>
-            <option value="card">Card Games</option>
+            <option selected value="">
+              All
+            </option>
+            <option value="Action">Action</option>
+            <option value="Indi">Indie</option>
+            <option value="Adventure">Adventure</option>
+            <option value="RPG">RPG</option>
+            <option value="Strategy">Strategy</option>
+            <option value="Shooter">Shooter</option>
+            <option value="Casual">Casual</option>
+            <option value="Simulation">Simulation</option>
+            <option value="Puzzle">Puzzle</option>
+            <option value="Arcade">Arcade</option>
+            <option value="Platformer">Platformer</option>
+            <option value="Racing">Racing</option>
+            <option value="Massively">Massively Multiplayer</option>
+            <option value="Sports">Sports</option>
+            <option value="Fighting">Fighting</option>
+            <option value="Family">Family</option>
+            <option value="Board Games">Board Games</option>
+            <option value="Educational">Educational</option>
+            <option value="Card">Card Games</option>
           </select>
         </div>
-        <div>
+        <div className={style.selectores}>
+          <label htmlFor="selectByBD">Select By BD Origin:...</label>
           <select
             className={style.input}
-            id="inputGroupSelect02"
-            defaultValue={"default"}
+            id="selectByBD"
+            onChange={handlerBDOriginChange}
           >
-            <option value={"default"}>Select by: BD Origin...</option>
-            <option value="both">Both</option>
+            <option selected value="">
+              Both
+            </option>
             <option value="api">External API</option>
             <option value="bd">Internal BD</option>
           </select>
         </div>
-        <div>
+        <div className={style.selectores}>
+          <label htmlFor="orderBy">Order By:...</label>
           <select
             className={style.input}
-            id="inputGroupSelect03"
-            defaultValue={"default"}
+            id="orderBy"
+            onChange={handlerOrderChange}
           >
-            <option value={"default"}>Order By:...</option>
-            <option value="a">Alphabetic asc</option>
-            <option value="d">Alphabetic desc</option>
-            <option value="r">Rating</option>
+            <option selected value="">
+              Any
+            </option>
+            <option value="asc">Alphabetic asc</option>
+            <option value="des">Alphabetic desc</option>
+            <option value="rating">Rating</option>
           </select>
         </div>
         <div>
           <Link to="/create">
-            <button className={style.boton}>Subir Juego a la BD</button>
+            <button className={style.boton}>Create New Game</button>
           </Link>
         </div>
       </nav>
