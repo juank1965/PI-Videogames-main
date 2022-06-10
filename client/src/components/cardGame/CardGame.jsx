@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function CardGame({ game }) {
   return (
     <div className={style.margen}>
-      <Link to="/detail" className={style.link}>
+      <Link to={`/${game.id}`} className={style.link}>
         <div className={style.card}>
           <img
             className={style.imagen}

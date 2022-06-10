@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<NavBarSec />} />
         <Route path="/create" element={<GameCreate />} />
-        <Route path="/detail" element={<GameDetail />} />
+        <Route path="/:id" element={<GameDetail />} />
       </Routes>
     </div>
   );
