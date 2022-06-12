@@ -128,10 +128,10 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
 
 **Ruta de detalle de videojuego**: debe contener
 
-- [ ] Los campos mostrados en la ruta principal para cada videojuegos (imagen, nombre, y géneros)
-- [ ] Descripción
-- [ ] Fecha de lanzamiento
-- [ ] Rating
+- [x] Los campos mostrados en la ruta principal para cada videojuegos (imagen, nombre, y géneros)
+- [x] Descripción
+- [x] Fecha de lanzamiento
+- [x] Rating
 - [ ] Plataformas
 
 **Ruta de creación de videojuegos**: debe contener
@@ -141,8 +141,8 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
   - Descripción
   - Fecha de lanzamiento
   - Rating
-- [x] Posibilidad de seleccionar/agregar varios géneros
-- [x] Posibilidad de seleccionar/agregar varias plataformas
+- [ ] Posibilidad de seleccionar/agregar varios géneros
+- [ ] Posibilidad de seleccionar/agregar varias plataformas
 - [x] Botón/Opción para crear un nuevo videojuego
 
 > Es requisito que el formulario de creación esté validado con JavaScript y no sólo con validaciones HTML. Pueden agregar las validaciones que consideren. Por ejemplo: Que el nombre del juego no pueda contener algunos símbolos, que el rating no pueda exceder determinado valor, etc.

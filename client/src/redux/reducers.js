@@ -5,11 +5,14 @@ import {
   SORT_VIDEOGAMES,
   BD_ORIGIN_CHANGE,
   CHANGE_GENRE,
+  GET_GENRES,
+  CREATE_VIDEOGAME,
 } from "./actions";
 
 const initialState = {
   videogamesFiltrados: [],
   videogames: [],
+  genres: [],
 };
 
 function reducer(state = initialState, action) {
@@ -112,6 +115,18 @@ function reducer(state = initialState, action) {
         ...state,
         videogamesFiltrados: videoGamesPorGenero,
       };
+    case GET_GENRES:
+      return {
+        ...state,
+        genres: action.payload,
+      };
+    case CREATE_VIDEOGAME:
+      return {
+        ...state,
+        videogames: [...state.videogames, action.payload],
+        videogamesFiltrados: [...state.videogames, action.payload],
+      };
+
     default:
       return state;
   }

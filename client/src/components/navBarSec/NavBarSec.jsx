@@ -67,9 +67,7 @@ function NavBarMain() {
             id="selectByGenre"
             onChange={handlerGenreChange}
           >
-            <option selected value="">
-              All
-            </option>
+            <option defaultValue="">All</option>
             <option value="Action">Action</option>
             <option value="Indi">Indie</option>
             <option value="Adventure">Adventure</option>
@@ -98,9 +96,7 @@ function NavBarMain() {
             id="selectByBD"
             onChange={handlerBDOriginChange}
           >
-            <option selected value="">
-              Both
-            </option>
+            <option defaultValue="">Both</option>
             <option value="api">External API</option>
             <option value="bd">Internal BD</option>
           </select>
@@ -112,9 +108,7 @@ function NavBarMain() {
             id="orderBy"
             onChange={handlerOrderChange}
           >
-            <option selected value="">
-              Any
-            </option>
+            <option defaultValue="">Any</option>
             <option value="asc">Alphabetic asc</option>
             <option value="des">Alphabetic desc</option>
             <option value="rating">Rating</option>

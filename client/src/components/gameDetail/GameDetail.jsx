@@ -7,6 +7,8 @@ import imagen from "../../assets/images/placeholder.jpg";
 const GameDetail = () => {
   const { id } = useParams();
   const [game, setGame] = useState({});
+  const [generos, setGeneros] = useState([]);
+  const [plataformas, setPlataformas] = useState([]);
   useEffect(() => {
     axios.get(`http://localhost:3001/api/videogame/${id}`).then((res) => {
       setGame(res.data);
@@ -15,17 +17,30 @@ const GameDetail = () => {
       setGame({});
     };
   }, [id]);
+  useEffect(() => {
+    setGeneros(game.genres);
+    setPlataformas(game.platforms);
+  }, [game]);
+
   return (
     <div className={style.container}>
       {game ? (
         <div className={style.card}>
           <h1 className={style.h1}>{game.name}</h1>
-          <h4 className={style.h4}>
-            {/*game.genre &
-              game.genres.map((genre) => {
-                return genre.name + " ";
-              })*/}
-          </h4>
+          <h4 className={style.h4}>Generos</h4>
+          <div className={style.info}>
+            {generos ? (
+              generos.map((genero) => {
+                return (
+                  <p className={style.p} key={genero.id}>
+                    {genero.name}
+                  </p>
+                );
+              })
+            ) : (
+              <p className={style.p}>No hay generos</p>
+            )}
+          </div>
           <div className={style.detalle}>
             <img
               src={game.background_image ? game.background_image : imagen}
@@ -39,22 +54,31 @@ const GameDetail = () => {
             </div>
           </div>
           <div className={style.pie}>
-            <div>
-              <p>Released</p>
-              <p>{game.released}</p>
-            </div>
-            <div>
-              <p>Rating</p>
-              <p>{game.rating}</p>
+            <div className={style.infopie}>
+              <div>
+                <p>Released</p>
+                <p>{game.released}</p>
+              </div>
+              <div>
+                <p>Rating</p>
+                <p>{game.rating}</p>
+              </div>
             </div>
             <div>
               <p>Platforms</p>
-              <p>
-                {/*game.platforms &
-                  game.platforms.map((platform) => {
-                    return platform.platform.name + " ";
-                  })*/}
-              </p>
+              <div className={style.info}>
+                {plataformas ? (
+                  plataformas.map((p) => {
+                    return (
+                      <p className={style.p} key={p.id}>
+                        {p.platform.name}
+                      </p>
+                    );
+                  })
+                ) : (
+                  <p className={style.p}>No hay generos</p>
+                )}
+              </div>
             </div>
           </div>
         </div>

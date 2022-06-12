@@ -5,6 +5,8 @@ export const GET_VIDEOGAME_BY_ID = "GET_VIDEOGAME_BY_ID";
 export const CHANGE_GENRE = "CHANGE_GENRE";
 export const SORT_VIDEOGAMES = "SORT_VIDEOGAMES";
 export const BD_ORIGIN_CHANGE = "BD_ORIGIN_CHANGE";
+export const GET_GENRES = "GET_GENRES";
+export const CREATE_VIDEOGAME = "CREATE_VIDEOGAME";
 
 export function getAllVideoGames() {
   return (dispatch) => {
@@ -71,6 +73,40 @@ export function getVideogamesByName(name) {
         dispatch({
           type: GET_VIDEOGAME_BY_NAME,
           payload: response.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+}
+
+export function createVideogame(videogame) {
+  return (dispatch) => {
+    // llamado a la API
+    axios
+      .post("http://localhost:3001/api/videogames", videogame)
+      .then((response) => {
+        dispatch({
+          type: CREATE_VIDEOGAME,
+          payload: response.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+}
+
+export function getGenres() {
+  return (dispatch) => {
+    // llamado a la API
+    axios
+      .get("http://localhost:3001/api/genres")
+      .then((response) => {
+        dispatch({
+          type: GET_GENRES,
+          payload: response.data.genres,
         });
       })
       .catch((error) => {

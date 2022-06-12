@@ -18,9 +18,10 @@ function CardGame({ game }) {
             <div>
               <h4>Genero(s):</h4>
               <div className={style.generos}>
-                {game.genres.map((genre) => {
-                  return <p key={genre.id}>{genre.name}</p>;
-                })}
+                {game.genres &&
+                  game.genres.map((genre) => {
+                    return <p key={genre.id}>{genre.name}</p>;
+                  })}
               </div>
             </div>
             <div>

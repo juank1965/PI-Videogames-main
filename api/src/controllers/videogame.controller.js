@@ -43,13 +43,23 @@ export const createVideogame = async (req, res) => {
     // El body tambien trae datos de platforms y genres que son arrays
     // Estos debe servir para unir el videojuego con las plataformas y generos de bd
     //const { name, description, released, background_image, rating, platforms, genres } = req.body;
-    const { name, description, background_image, released, rating } = req.body;
+    const {
+      name,
+      description,
+      background_image,
+      released,
+      rating,
+      genres,
+      platforms,
+    } = req.body;
     const newVideogame = await Videogame.create({
       name,
       description,
       background_image,
       released,
       rating,
+      genres,
+      platforms,
     });
     res.json({
       message: `Se ha creado el video juego ${newVideogame.name}`,
