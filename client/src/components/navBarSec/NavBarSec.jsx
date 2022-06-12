@@ -69,7 +69,7 @@ function NavBarMain() {
           >
             <option defaultValue="">All</option>
             <option value="Action">Action</option>
-            <option value="Indi">Indie</option>
+            <option value="Indie">Indie</option>
             <option value="Adventure">Adventure</option>
             <option value="RPG">RPG</option>
             <option value="Strategy">Strategy</option>
@@ -80,7 +80,7 @@ function NavBarMain() {
             <option value="Arcade">Arcade</option>
             <option value="Platformer">Platformer</option>
             <option value="Racing">Racing</option>
-            <option value="Massively">Massively Multiplayer</option>
+            <option value="Massively Multiplayer">Massively Multiplayer</option>
             <option value="Sports">Sports</option>
             <option value="Fighting">Fighting</option>
             <option value="Family">Family</option>

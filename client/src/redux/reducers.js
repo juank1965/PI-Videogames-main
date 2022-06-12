@@ -109,7 +109,9 @@ function reducer(state = initialState, action) {
       );
       if (videoGamesPorGenero.length === 0) {
         videoGamesPorGenero = [...state.videogames];
-        alert("No hay videojuegos por genero");
+        alert(
+          `No hay videojuegos del genero ${action.payload} o ha seleccionado ALL, se muestran todos`
+        );
       }
       return {
         ...state,
