@@ -8,22 +8,42 @@ import { getAllVideoGames } from "../../redux/actions";
 const ContainerGames = () => {
   let videogames = useSelector((state) => state.videogamesFiltrados);
   const dispatch = useDispatch();
-  const [pinicial, setPinicial] = useState(1);
+  const [pActual, setPActual] = useState(1);
   const pfinal = 7;
+  const videoGamesPerPage = 15;
   useEffect(() => {
     dispatch(getAllVideoGames());
   }, []);
 
+  const [elements, setElements] = useState([]);
+
+  useEffect(() => {
+    const gamesPerPage = () => {
+      const elSelected = videogames.slice(0, videoGamesPerPage);
+      setElements(elSelected);
+    };
+    gamesPerPage();
+  }, [videogames]);
+
   const handlerChangePrevPage = () => {
-    if (pinicial > 1) {
-      setPinicial(pinicial - 1);
-    }
+    const prePage = pActual - 1;
+    const prePePage = pActual - 2;
+    if (prePePage <= -1) return;
+    const firstIndex = prePePage * videoGamesPerPage; //0 15
+    const lastIndex = prePage * videoGamesPerPage; //15 30
+    setElements(videogames.slice(firstIndex, lastIndex)); //0-15  15-30
+    setPActual(prePage);
   };
 
   const handlerChangeNextPage = () => {
-    if (pinicial < pfinal) {
-      setPinicial(pinicial + 1);
-    }
+    const totalItems = videogames.length;
+    const nextPage = pActual + 1; //2   3
+    //1   2
+    const firstIndex = pActual * videoGamesPerPage; //15  30
+    const lastIndex = nextPage * videoGamesPerPage; //30  45
+    if (firstIndex > totalItems) return;
+    setElements(videogames.slice(firstIndex, lastIndex)); //15-30 30-45
+    setPActual(nextPage);
   };
 
   return (
@@ -33,15 +53,15 @@ const ContainerGames = () => {
           Prev
         </button>
         <p>
-          | Page {pinicial} de {pfinal} |
+          | Page {pActual} de {pfinal} |
         </p>
         <button className={style.boton} onClick={handlerChangeNextPage}>
           Next
         </button>
       </div>
       <div className={style.container}>
-        {videogames &&
-          videogames.map((game) => {
+        {elements &&
+          elements.map((game) => {
             return <CardGame key={game.id} game={game} />;
           })}
       </div>
@@ -50,7 +70,7 @@ const ContainerGames = () => {
           Prev
         </button>
         <p>
-          | Page {pinicial} de {pfinal} |
+          | Page {pActual} de {pfinal} |
         </p>
         <button className={style.boton} onClick={handlerChangeNextPage}>
           Next

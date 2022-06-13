@@ -42,12 +42,14 @@ const GameDetail = () => {
             )}
           </div>
           <div className={style.detalle}>
-            <img
-              src={game.background_image ? game.background_image : imagen}
-              height="600px"
-              width="600px"
-              alt="Imagen del Game"
-            />
+            <div>
+              <img
+                src={game.background_image ? game.background_image : imagen}
+                height="auto"
+                width="100%"
+                alt="Imagen del Game"
+              />
+            </div>
             <div className={style.descripcion}>
               <h4 className={style.h4}>Description</h4>
               <p className={style.texto}>{game.description}</p>
