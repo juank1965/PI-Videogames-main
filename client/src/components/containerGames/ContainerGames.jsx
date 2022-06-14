@@ -3,7 +3,7 @@ import CardGame from "../cardGame/CardGame";
 import style from "./ContainerGames.module.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllVideoGames } from "../../redux/actions";
+import { getAllVideoGames, getGenres } from "../../redux/actions";
 
 const ContainerGames = () => {
   let videogames = useSelector((state) => state.videogamesFiltrados);
@@ -13,6 +13,7 @@ const ContainerGames = () => {
   const videoGamesPerPage = 15;
   useEffect(() => {
     dispatch(getAllVideoGames());
+    dispatch(getGenres());
   }, []);
 
   const [elements, setElements] = useState([]);
@@ -61,8 +62,8 @@ const ContainerGames = () => {
       </div>
       <div className={style.container}>
         {elements &&
-          elements.map((game) => {
-            return <CardGame key={game.id} game={game} />;
+          elements.map((el) => {
+            return <CardGame key={el.id} game={el} />;
           })}
       </div>
       <div className={style.pie}>

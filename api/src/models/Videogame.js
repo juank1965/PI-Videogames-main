@@ -13,13 +13,14 @@ const Videogame = sequelize.define(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     description: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     background_image: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
     },
     released: {
       type: DataTypes.STRING,

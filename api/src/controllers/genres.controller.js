@@ -16,16 +16,12 @@ export const getGenres = async (req, res) => {
 
     if (genres.length > 0) {
       res.status(200).json({
-        ok: true,
-        message: "Genres found",
-        genres: genres,
+        results: genres,
       });
     } else {
       const genresCreated = await Genre.bulkCreate(genresApi);
       res.status(200).json({
-        ok: true,
-        message: "Genres created",
-        genres: genresCreated,
+        results: genresCreated,
       });
     }
   } catch (error) {

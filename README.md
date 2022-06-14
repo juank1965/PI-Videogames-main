@@ -86,10 +86,10 @@ API_KEY = fa8d428838dc4428b6bd3b8ad969e241
 
 ### Únicos Endpoints/Flags que pueden utilizar
 
-- GET <https://api.rawg.io/api/games?key=fa8d428838dc4428b6bd3b8ad969e241>
-- GET <https://api.rawg.io/api/games?key=fa8d428838dc4428b6bd3b8ad969e241&search={game}>
-- GET <https://api.rawg.io/api/genres?key=fa8d428838dc4428b6bd3b8ad969e241>
-- GET <https://api.rawg.io/api/games/{id}?key=fa8d428838dc4428b6bd3b8ad969e241>
+- GET <https://api.rawg.io/api/games?key=YOUR API KEY>
+- GET <https://api.rawg.io/api/games?key=YOUR API KEY&search={game}>
+- GET <https://api.rawg.io/api/genres?key=YOUR API KEY>
+- GET <https://api.rawg.io/api/games/{id}?key=YOUR API KEY>
 
 ### Requerimientos mínimos
 
@@ -122,7 +122,7 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
   - Géneros
 - [x] Botones/Opciones para filtrar por género y por videojuego existente o agregado por nosotros
 - [x] Botones/Opciones para ordenar tanto ascendentemente como descendentemente los videojuegos por orden alfabético y por rating
-- [ ] Paginado para ir buscando y mostrando los siguientes videojuegos, 15 juegos por pagina, mostrando los primeros 15 en la primer pagina.
+- [x] Paginado para ir buscando y mostrando los siguientes videojuegos, 15 juegos por pagina, mostrando los primeros 15 en la primer pagina.
 
 **IMPORTANTE**: Dentro de la Ruta Principal se deben mostrar tanto los videjuegos traidos desde la API como así también los de la base de datos. Debido a que en la API existen alrededor de 500 mil juegos, por cuestiones de performance pueden tomar la simplificación de obtener y paginar los primeras 100.
 
@@ -132,7 +132,7 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
 - [x] Descripción
 - [x] Fecha de lanzamiento
 - [x] Rating
-- [ ] Plataformas
+- [x] Plataformas
 
 **Ruta de creación de videojuegos**: debe contener
 
@@ -141,8 +141,8 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
   - Descripción
   - Fecha de lanzamiento
   - Rating
-- [ ] Posibilidad de seleccionar/agregar varios géneros
-- [ ] Posibilidad de seleccionar/agregar varias plataformas
+- [x] Posibilidad de seleccionar/agregar varios géneros
+- [x] Posibilidad de seleccionar/agregar varias plataformas
 - [x] Botón/Opción para crear un nuevo videojuego
 
 > Es requisito que el formulario de creación esté validado con JavaScript y no sólo con validaciones HTML. Pueden agregar las validaciones que consideren. Por ejemplo: Que el nombre del juego no pueda contener algunos símbolos, que el rating no pueda exceder determinado valor, etc.

@@ -107,6 +107,7 @@ function reducer(state = initialState, action) {
       videoGamesPorGenero = videoGamesPorGenero.filter((videogame) =>
         videogame.genres.find((genre) => genre.name === action.payload)
       );
+
       if (videoGamesPorGenero.length === 0) {
         videoGamesPorGenero = [...state.videogames];
         alert(

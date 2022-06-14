@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import style from "./GameCreate.module.css";
-import { getGenres, createVideogame } from "../../redux/actions.js";
+import { createVideogame } from "../../redux/actions.js";
 
 function GameCreate() {
   let genero = useSelector((state) => state.genres);
   const videoJuego = useSelector((state) => state.videogames);
   let dispatch = useDispatch();
 
-  const listageneros = [];
   const platforms = [
     "Android",
     "GameBoy",
@@ -20,10 +19,7 @@ function GameCreate() {
     "Xbox",
   ];
 
-  useEffect(() => {
-    dispatch(getGenres());
-  }, [dispatch]);
-
+  const listageneros = [];
   for (let i = 0; i < genero.length; i++) {
     listageneros.push(genero[i].name);
   }
@@ -41,6 +37,7 @@ function GameCreate() {
   let [checkGenero, setCheckGenero] = useState(
     new Array(listageneros.length).fill(false)
   );
+
   function changeCheckGenre(indice) {
     const upCheck = checkGenero.map((item, index) =>
       index === indice ? !item : item
@@ -128,8 +125,7 @@ function GameCreate() {
         genres: [],
         platforms: [],
       });
-      document.getElementById("form").reset();
-      window.location.reload();
+      e.target.reset();
     }
   }
 

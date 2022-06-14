@@ -53,15 +53,21 @@ export function changeGenre(genre) {
 }
 
 export function getVideoGame(id) {
-  return (dispatch) => {
-    // llamado a la API
-    axios.get(`http://localhost:3001/api/videogames/${id}`).then((response) => {
-      dispatch({
-        type: GET_VIDEOGAME_BY_ID,
-        payload: response.data,
-      });
-    });
-  };
+  try {
+    return (dispatch) => {
+      // llamado a la API
+      axios
+        .get(`http://localhost:3001/api/videogames/${id}`)
+        .then((response) => {
+          dispatch({
+            type: GET_VIDEOGAME_BY_ID,
+            payload: response.data,
+          });
+        });
+    };
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export function getVideogamesByName(name) {
@@ -106,7 +112,7 @@ export function getGenres() {
       .then((response) => {
         dispatch({
           type: GET_GENRES,
-          payload: response.data.genres,
+          payload: response.data.results,
         });
       })
       .catch((error) => {

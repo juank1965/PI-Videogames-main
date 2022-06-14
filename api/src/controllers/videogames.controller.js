@@ -75,7 +75,7 @@ export const getVideogames = async (req, res) => {
     });
     let filteredDataVideogamesDb = videogameDb.map((videogame) => {
       return {
-        id: parseInt(videogame.id, 16),
+        id: videogame.id,
         name: videogame.name,
         released: videogame.released,
         background_image: videogame.background_image,

@@ -5,20 +5,18 @@ import Videogame from "./Videogame.js";
 //Relaciones
 Videogame.belongsToMany(Genre, {
   through: "Videogame_Genre",
-  timestamp: false,
+  targetKey: "name",
 });
 Genre.belongsToMany(Videogame, {
   through: "Videogame_Genre",
-  timestamp: false,
 });
 
 Videogame.belongsToMany(Platform, {
   through: "Videogame_Platform",
-  timestamp: false,
+  targetKey: "name",
 });
 Platform.belongsToMany(Videogame, {
   through: "Videogame_Platform",
-  timestamp: false,
 });
 
 export { Genre, Platform, Videogame };

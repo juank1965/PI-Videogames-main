@@ -27,7 +27,7 @@ const GameDetail = () => {
       {game ? (
         <div className={style.card}>
           <h1 className={style.h1}>{game.name}</h1>
-          <h4 className={style.h4}>Generos</h4>
+          <h4 className={style.h4}>Genres</h4>
           <div className={style.info}>
             {generos ? (
               generos.map((genero) => {
@@ -38,7 +38,7 @@ const GameDetail = () => {
                 );
               })
             ) : (
-              <p className={style.p}>No hay generos</p>
+              <p className={style.p}>Does not register genres</p>
             )}
           </div>
           <div className={style.detalle}>
@@ -72,13 +72,13 @@ const GameDetail = () => {
                 {plataformas ? (
                   plataformas.map((p) => {
                     return (
-                      <p className={style.p} key={p.id}>
+                      <p className={style.p} key={p.platform.id}>
                         {p.platform.name}
                       </p>
                     );
                   })
                 ) : (
-                  <p className={style.p}>No hay generos</p>
+                  <p className={style.p}>Does not register platforms</p>
                 )}
               </div>
             </div>

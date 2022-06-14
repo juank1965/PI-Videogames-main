@@ -11,6 +11,7 @@ const Platform = sequelize.define(
     },
     name: {
       type: DataTypes.STRING,
+      unique: true,
     },
   },
   {
