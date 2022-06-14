@@ -28,6 +28,7 @@ function reducer(state = initialState, action) {
         ...state,
         videogamesFiltrados: action.payload,
       };
+
     case GET_VIDEOGAME_BY_ID:
       return {
         ...state,

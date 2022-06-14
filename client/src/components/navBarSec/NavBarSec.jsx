@@ -10,12 +10,11 @@ import {
   changeGenre,
 } from "../../redux/actions";
 //import { getVideogamesByGenre } from "../../redux/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function NavBarMain() {
-  // estado para el input de busqueda
+  let generos = useSelector((state) => state.genres);
   const [search, setSearch] = useState("");
-
   let dispatch = useDispatch();
   // funcion para buscar un videojuego
   const searchByname = (e) => {
@@ -68,25 +67,11 @@ function NavBarMain() {
             onChange={handlerGenreChange}
           >
             <option defaultValue="">All</option>
-            <option value="Action">Action</option>
-            <option value="Indie">Indie</option>
-            <option value="Adventure">Adventure</option>
-            <option value="RPG">RPG</option>
-            <option value="Strategy">Strategy</option>
-            <option value="Shooter">Shooter</option>
-            <option value="Casual">Casual</option>
-            <option value="Simulation">Simulation</option>
-            <option value="Puzzle">Puzzle</option>
-            <option value="Arcade">Arcade</option>
-            <option value="Platformer">Platformer</option>
-            <option value="Racing">Racing</option>
-            <option value="Massively Multiplayer">Massively Multiplayer</option>
-            <option value="Sports">Sports</option>
-            <option value="Fighting">Fighting</option>
-            <option value="Family">Family</option>
-            <option value="Board Games">Board Games</option>
-            <option value="Educational">Educational</option>
-            <option value="Card">Card Games</option>
+            {generos.map((genre) => (
+              <option key={genre.id} value={genre.name}>
+                {genre.name}
+              </option>
+            ))}
           </select>
         </div>
         <div className={style.selectores}>
