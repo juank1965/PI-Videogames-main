@@ -9,8 +9,8 @@ const ContainerGames = () => {
   let videogames = useSelector((state) => state.videogamesFiltrados);
   const dispatch = useDispatch();
   const [pActual, setPActual] = useState(1);
-  const pfinal = 7;
   const videoGamesPerPage = 15;
+  const pfinal = Math.ceil(videogames.length / videoGamesPerPage);
   useEffect(() => {
     dispatch(getAllVideoGames());
     dispatch(getGenres());
