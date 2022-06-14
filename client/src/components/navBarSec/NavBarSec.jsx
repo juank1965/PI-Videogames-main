@@ -66,7 +66,7 @@ function NavBarMain() {
             id="selectByGenre"
             onChange={handlerGenreChange}
           >
-            <option defaultValue="">All</option>
+            <option defaultValue="All">All</option>
             {generos.map((genre) => (
               <option key={genre.id} value={genre.name}>
                 {genre.name}
