@@ -1,5 +1,7 @@
 import { sequelize } from "../db.js";
 import { DataTypes } from "sequelize";
+import Genre from "./Genre.js";
+import Platform from "./Platform.js";
 
 const Videogame = sequelize.define(
   "videogame",
@@ -33,5 +35,10 @@ const Videogame = sequelize.define(
     timestamps: false,
   }
 );
+
+Videogame.belongsToMany(Genre, { through: "videogame_genre" });
+Videogame.belongsToMany(Platform, { through: "videogame_platform" });
+Genre.belongsToMany(Videogame, { through: "videogame_genre" });
+Platform.belongsToMany(Videogame, { through: "videogame_platform" });
 
 export default Videogame;
