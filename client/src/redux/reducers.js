@@ -105,8 +105,10 @@ function reducer(state = initialState, action) {
       };
     case CHANGE_GENRE:
       let videoGamesPorGenero = [...state.videogames];
-      videoGamesPorGenero = videoGamesPorGenero.filter((videogame) =>
-        videogame.genres.find((genre) => genre.name === action.payload)
+      videoGamesPorGenero = videoGamesPorGenero.filter(
+        (videogame) =>
+          videogame.genres &&
+          videogame.genres.find((genre) => genre.name === action.payload)
       );
 
       if (videoGamesPorGenero.length === 0) {

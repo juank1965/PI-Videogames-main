@@ -44,6 +44,7 @@ export const createVideogame = async (req, res) => {
   try {
     const { name, description, image, released, rating, genres, platforms } =
       req.body;
+
     const newVideogame = await Videogame.create({
       name,
       description,

@@ -90,6 +90,7 @@ function GameCreate() {
     if (!newGame.name.trim()) {
       return alert("Necesita poner un nombre");
     } else if (
+      videoJuego &&
       videoJuego.find(
         (e) => e.name.toLowerCase().trim() === newGame.name.toLowerCase().trim()
       )
