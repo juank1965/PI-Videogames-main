@@ -10,8 +10,8 @@ const LandingPage = () => {
           <div>
             <h1 className={styles.title}>Videogames App</h1>
             <h2>
-              A free application for you to keep up to date your information
-              about your passion as a gamer
+              A free app for you to keep up to date your information about your
+              passion as a gamer
             </h2>
             <Link to="/home">
               <button className={styles.boton}>Get Started</button>

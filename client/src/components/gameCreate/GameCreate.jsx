@@ -116,7 +116,9 @@ function GameCreate() {
       return alert("Seleccione uno o más plataformas");
     } else {
       dispatch(createVideogame(newGame));
-      alert("New videogame has been created");
+      alert(
+        `New videogame ${newGame.name} has been created. Si desea crear otro juego vaya a Home y vuelva a entrar a este formulario`
+      );
       setNewGame({
         name: "",
         image: "",
@@ -126,8 +128,8 @@ function GameCreate() {
         genres: [],
         platforms: [],
       });
-      e.target.reset();
     }
+    e.target.reset();
   }
 
   return (

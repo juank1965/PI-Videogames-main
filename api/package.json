@@ -23,6 +23,9 @@
     "sequelize": "^6.20.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "chai": "^4.3.6",
+    "nodemon": "^2.0.16",
+    "supertest": "^6.2.3",
+    "supertest-session": "^4.1.0"
   }
 }
