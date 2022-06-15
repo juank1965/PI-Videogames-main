@@ -12,7 +12,9 @@ export const getVideogameById = async (req, res) => {
     let videogameById;
     if (id) {
       if (regexExp.test(id)) {
-        videogameById = await Videogame.findByPk(id);
+        videogameById = await Videogame.findByPk(id, {
+          include: [{ model: Genre }],
+        });
       } else {
         let videogameApi = await axios.get(
           `https://api.rawg.io/api/games/${id}?key=fa8d428838dc4428b6bd3b8ad969e241`
@@ -51,15 +53,18 @@ export const createVideogame = async (req, res) => {
       released,
       background_image: image,
       rating,
-      platforms,
-      genres,
     });
-    if (genres) {
-      await newVideogame.addGenres(genres);
-    }
-    if (platforms) {
-      await newVideogame.addPlatforms(platforms);
-    }
+    genres.map(async (genre) => {
+      let genre_id = await Genre.findAll({ where: { name: genre } });
+      await newVideogame.addGenre(genre_id);
+    });
+    /*
+    platforms.map(async (platform) => {
+      let platform_id = await Platform.findOrCreate({
+        where: { name: platform },
+      });
+      await newVideogame.addPlatform(platform_id);
+    });*/
     res.json({
       message: `Se ha creado el video juego ${newVideogame.name}`,
     });

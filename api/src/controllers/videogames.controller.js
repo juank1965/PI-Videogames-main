@@ -1,4 +1,6 @@
 import Videogame from "../models/Videogame.js";
+import Genre from "../models/Genre.js";
+import Platform from "../models/Platform.js";
 import { Op } from "sequelize";
 import axios from "axios";
 // peticion GET para obtener todos los videojuegos por nombre (?name=)
@@ -38,6 +40,15 @@ export const getVideogames = async (req, res) => {
             [Op.iLike]: `%${name}%`,
           },
         },
+        include: [
+          {
+            model: Genre,
+          },
+          {
+            model: Platform,
+          },
+        ],
+
         order: [["name", "ASC"]],
       });
     } else {
@@ -59,7 +70,9 @@ export const getVideogames = async (req, res) => {
           );
         }
       }
-      videogamesListDb = await Videogame.findAll();
+      videogamesListDb = await Videogame.findAll({
+        include: [{ model: Genre }, { model: Platform }],
+      });
     }
     Promise.all([videogamesListApi, videogamesListDb]).then((respuesta) => {
       const [videogameApi, videogameDb] = respuesta;
