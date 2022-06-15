@@ -11,6 +11,10 @@ const ContainerGames = () => {
   const [pActual, setPActual] = useState(1);
   const videoGamesPerPage = 15;
   const pfinal = Math.ceil(videogames.length / videoGamesPerPage);
+  const paginas = [];
+  for (let i = 1; i <= pfinal; i++) {
+    paginas.push(i);
+  }
   useEffect(() => {
     dispatch(getAllVideoGames());
     dispatch(getGenres());
@@ -30,35 +34,58 @@ const ContainerGames = () => {
     const prePage = pActual - 1;
     const prePePage = pActual - 2;
     if (prePePage <= -1) return;
-    const firstIndex = prePePage * videoGamesPerPage; //0 15
-    const lastIndex = prePage * videoGamesPerPage; //15 30
-    setElements(videogames.slice(firstIndex, lastIndex)); //0-15  15-30
+    const firstIndex = prePePage * videoGamesPerPage;
+    const lastIndex = prePage * videoGamesPerPage;
+    setElements(videogames.slice(firstIndex, lastIndex));
     setPActual(prePage);
   };
 
   const handlerChangeNextPage = () => {
     const totalItems = videogames.length;
-    const nextPage = pActual + 1; //2   3
-    //1   2
-    const firstIndex = pActual * videoGamesPerPage; //15  30
-    const lastIndex = nextPage * videoGamesPerPage; //30  45
+    const nextPage = pActual + 1;
+
+    const firstIndex = pActual * videoGamesPerPage;
+    const lastIndex = nextPage * videoGamesPerPage;
     if (firstIndex > totalItems) return;
-    setElements(videogames.slice(firstIndex, lastIndex)); //15-30 30-45
+    setElements(videogames.slice(firstIndex, lastIndex));
     setPActual(nextPage);
+  };
+
+  const handlerChangePage = (e) => {
+    const page = e.target.value;
+    if (page > pfinal || page <= -1) return;
+    const firstIndex = (page - 1) * videoGamesPerPage;
+    const lastIndex = page * videoGamesPerPage;
+    setElements(videogames.slice(firstIndex, lastIndex));
+    setPActual(page);
   };
 
   return (
     <div>
       <div className={style.pie}>
-        <button className={style.boton} onClick={handlerChangePrevPage}>
-          Prev
-        </button>
-        <p>
+        <div className={style.paginado}>
+          <button className={style.boton} onClick={handlerChangePrevPage}>
+            Prev
+          </button>
+          <div>
+            {paginas.map((p) => (
+              <button
+                key={p}
+                value={p}
+                className={pActual === p ? style.seleccion : style.noseleccion}
+                onClick={handlerChangePage}
+              >
+                {p}
+              </button>
+            ))}
+          </div>
+          <button className={style.boton} onClick={handlerChangeNextPage}>
+            Next
+          </button>
+        </div>
+        <p className={style.paginas}>
           | Page {pActual} de {pfinal} |
         </p>
-        <button className={style.boton} onClick={handlerChangeNextPage}>
-          Next
-        </button>
       </div>
       <div className={style.container}>
         {elements &&
@@ -67,15 +94,29 @@ const ContainerGames = () => {
           })}
       </div>
       <div className={style.pie}>
-        <button className={style.boton} onClick={handlerChangePrevPage}>
-          Prev
-        </button>
-        <p>
+        <div className={style.paginado}>
+          <button className={style.boton} onClick={handlerChangePrevPage}>
+            Prev
+          </button>
+          <div>
+            {paginas.map((p) => (
+              <button
+                key={p}
+                value={p}
+                className={pActual === p ? style.seleccion : style.noseleccion}
+                onClick={handlerChangePage}
+              >
+                {p}
+              </button>
+            ))}
+          </div>
+          <button className={style.boton} onClick={handlerChangeNextPage}>
+            Next
+          </button>
+        </div>
+        <p className={style.paginas}>
           | Page {pActual} de {pfinal} |
         </p>
-        <button className={style.boton} onClick={handlerChangeNextPage}>
-          Next
-        </button>
       </div>
     </div>
   );

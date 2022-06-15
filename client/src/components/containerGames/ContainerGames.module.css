@@ -21,6 +21,8 @@
   justify-content: center;
   background: white;
   color: black;
+  flex-direction: column;
+  align-items: center;
 }
 
 .boton {
@@ -28,4 +30,22 @@
   border: none;
   cursor: pointer;
   color: blue;
+}
+
+.paginado {
+  display: flex;
+}
+
+.paginas {
+  margin: 2px;
+}
+
+.seleccion {
+  background: #00a0c8;
+  color: white;
+}
+
+.noseleccion {
+  background: white;
+  color: black;
 }
