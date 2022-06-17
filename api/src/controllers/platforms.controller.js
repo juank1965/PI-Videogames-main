@@ -15,21 +15,21 @@ export const getPlatforms = async (req, res) => {
     const platforms = await Platform.findAll();
 
     if (platforms.length > 0) {
-      res.status(200).json({
+      return res.status(200).json({
         ok: true,
         message: "Platforms found",
         platforms: platforms,
       });
     } else {
       const platformsCreated = await Platform.bulkCreate(platformsApi);
-      res.status(200).json({
+      return res.status(200).json({
         ok: true,
         message: "Platforms created",
         platforms: platformsCreated,
       });
     }
   } catch (error) {
-    res.json({
+    return res.json({
       message: `Error al obtener las plataformas ${error}`,
     });
   }

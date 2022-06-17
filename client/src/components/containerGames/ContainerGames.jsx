@@ -26,6 +26,7 @@ const ContainerGames = () => {
     const gamesPerPage = () => {
       const elSelected = videogames.slice(0, videoGamesPerPage);
       setElements(elSelected);
+      setPActual(1);
     };
     gamesPerPage();
   }, [videogames]);
@@ -42,8 +43,8 @@ const ContainerGames = () => {
 
   const handlerChangeNextPage = () => {
     const totalItems = videogames.length;
+    if (pActual === pfinal) return;
     const nextPage = pActual + 1;
-
     const firstIndex = pActual * videoGamesPerPage;
     const lastIndex = nextPage * videoGamesPerPage;
     if (firstIndex > totalItems) return;
@@ -53,7 +54,7 @@ const ContainerGames = () => {
 
   const handlerChangePage = (e) => {
     const page = e.target.value;
-    if (page > pfinal || page <= -1) return;
+    if (page >= pfinal || page < 1) return;
     const firstIndex = (page - 1) * videoGamesPerPage;
     const lastIndex = page * videoGamesPerPage;
     setElements(videogames.slice(firstIndex, lastIndex));
@@ -72,8 +73,9 @@ const ContainerGames = () => {
               <button
                 key={p}
                 value={p}
-                className={pActual === p ? style.seleccion : style.noseleccion}
+                className={p === pActual ? style.seleccion : style.noseleccion}
                 onClick={handlerChangePage}
+                disabled
               >
                 {p}
               </button>
@@ -83,9 +85,11 @@ const ContainerGames = () => {
             Next
           </button>
         </div>
+        {/*
         <p className={style.paginas}>
           | Page {pActual} de {pfinal} |
         </p>
+            */}
       </div>
       <div className={style.container}>
         {elements &&
@@ -114,9 +118,11 @@ const ContainerGames = () => {
             Next
           </button>
         </div>
+        {/*
         <p className={style.paginas}>
           | Page {pActual} de {pfinal} |
         </p>
+            */}
       </div>
     </div>
   );

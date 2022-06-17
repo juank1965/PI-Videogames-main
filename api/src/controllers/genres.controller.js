@@ -15,17 +15,17 @@ export const getGenres = async (req, res) => {
     const genres = await Genre.findAll();
 
     if (genres.length > 0) {
-      res.status(200).json({
+      return res.status(200).json({
         results: genres,
       });
     } else {
       const genresCreated = await Genre.bulkCreate(genresApi);
-      res.status(200).json({
+      return res.status(200).json({
         results: genresCreated,
       });
     }
   } catch (error) {
-    res.json({
+    return res.json({
       message: `Error al obtener los generos ${error}`,
     });
   }

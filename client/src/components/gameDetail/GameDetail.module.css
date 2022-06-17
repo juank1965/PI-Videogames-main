@@ -66,6 +66,7 @@
   font-size: 0.8em;
   background: black;
   border-bottom: white solid 2px;
+  flex-wrap: wrap;
 }
 
 .infopie {
@@ -73,4 +74,5 @@
   justify-content: space-evenly;
   flex-direction: row;
   border-bottom: white solid 2px;
+  flex-wrap: wrap;
 }
